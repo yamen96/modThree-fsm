@@ -3,11 +3,18 @@ import { modThree } from "../src/modThree";
 describe("Modulo Three", () => {
   it("modThree should return the correct answer for positive integers upto 1000", () => {
     for (let i = 0; i < 1000; i++) {
-      const binaryString: string = (i >>> 0).toString(2);
+      const binaryString: string = (i).toString(2);
       const expectedResult: number = i % 3;
       const result: number = modThree(binaryString);
       expect(result).toEqual(expectedResult);
     }
+  });
+
+  it("modThree should return the correct answer for max safe integer", () => {
+    const binaryString: string = (Number.MAX_SAFE_INTEGER).toString(2);
+    const expectedResult: number = Number.MAX_SAFE_INTEGER % 3;
+    const result: number = modThree(binaryString);
+    expect(result).toEqual(expectedResult);
   })
 
   it("empty input string should throw error", () => {
